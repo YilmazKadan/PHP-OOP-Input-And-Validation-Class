@@ -21,7 +21,6 @@ if (INPUT::exist()) {
 }
 ```
 
-```php
 ## Validation sınıfı
 
 Bu sınıf içerisinde bulunan **check** fonksiyonu aracılığı ile tüm işlemleri hallediyor. 
@@ -36,6 +35,7 @@ email = email formatı
 matches  = eşit olmasını istediğimiz farklı bir input seçiyoruz.
 
 ### Genel kullanım
+```php
  <?php
 if (INPUT::exist()) {
     $validate = new Validate();
