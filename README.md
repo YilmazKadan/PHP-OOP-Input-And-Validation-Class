@@ -35,6 +35,25 @@ email = email formatı
 matches  = eşit olmasını istediğimiz farklı bir input seçiyoruz.
 
 ### Genel kullanım
+
+**Örnek form elemanı**
+```html
+<form action="" method="POST">
+                    <div class="form-group col-md-4">
+                        <label for=""> Ad:</label>
+                        <input type="text" name="ad" class="form-control">
+                        <label for=""> Mail:</label>
+                        <input type="text" name="mail" class="form-control">
+                        <label for=""> Şifre:</label>
+                        <input type="text" name="sifre" class="form-control">
+                        <label for=""> Şifre Tekrar:</label>
+                        <input type="text" name="sifreTekrar" class="form-control">
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Gönder">
+                </form>
+
+
+```
 ```php
  <?php
 if (INPUT::exist()) {
