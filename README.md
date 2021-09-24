@@ -17,7 +17,11 @@ ile sınıfları dahil ediyoruz.
 Post veya Get isteği var mı yok mu aşağıdaki kod satırı ile kontrol edebilirsiniz.
 
 ```php
+// İngilizce versiyonu
 if (INPUT::exist()) {
+}
+// Türkçe versiyonu
+ if(Input::kontrol('POST')){
 }
 ```
 
@@ -28,11 +32,19 @@ Fonksiyona bir dizi veya POST , GET yolluyoruz.
 Ardından ikinci bir array ile form elemanlarımızın **name** değerlerini yolluyoruz(Aşağıdaki **name** değeri ile karıştırılmamalı).
 Bunların ardından hata mesajları ekrana verdirilirken input'un name attr'si default olarak verilir , ama özelleştirmek istiyorsanız **name** adına bir değer yollamanız gerekmekte.
 
+**İngilizce versiyonu**
 required = "Boş geçilemez"
 min  =  minumum karakter
 max = maksimum karakter
 email = email formatı
 matches  = eşit olmasını istediğimiz farklı bir input seçiyoruz.
+
+**Türkçe versiyonu**
+gerekli = "Boş geçilemez"
+min  =  minumum karakter
+max  = maksimum karakter
+mail = email formatı
+eslesme   = eşit olmasını istediğimiz farklı bir input seçiyoruz.
 
 ### Genel kullanım
 
@@ -55,6 +67,7 @@ matches  = eşit olmasını istediğimiz farklı bir input seçiyoruz.
 
 ```
 ```php
+// İngilizce versiyon
  <?php
 if (INPUT::exist()) {
     $validate = new Validate();
@@ -88,5 +101,41 @@ if (INPUT::exist()) {
 } else {
     echo 'Post yok';
 }
+
+// Türkçe versiyon
+
+if (Input::kontrol('POST')) {
+    $kontrol = new formKontrol;
+
+    $kontrol->kontrol($_POST, array(
+        "ad" => array(
+            "gerekli" => true,
+            "min" => 3,
+            "max" => 5
+        ),
+        'mail' => array(
+            "gerekli" => true,
+            "mail" => true
+        ),
+        "sifre" => array(
+            "gerekli" => true,
+            "min" => 8,
+            "max" => 16
+        ),
+        "sifreTekrar" => array(
+            "eslesme" => "sifre"
+        )
+    ));
+
+    if ($kontrol->olumlumu()) {
+        echo "Kayıt yapılabilir";
+    } else {
+        echo 'Kayıt yapılamaz çünkü : <br>';
+        $kontrol->hataYazdir();
+    }
+} else {
+    echo 'Post yok';
+}
+
 
 ```
